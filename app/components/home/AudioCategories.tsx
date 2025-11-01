@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 const items = [
 	{
 		image: "/home/headphone.png",
@@ -33,9 +34,9 @@ export const AudioCategories = () => {
 						<h4 className="uppercase font-bold tracking-[1.29px]">
 							{item.title}
 						</h4>
-						<span className="tracking-wide group-hover:text-peach transition text-xs">
+						<Link href={`/categories/${item.title.toLowerCase()}`} className="tracking-wide group-hover:text-peach transition text-xs">
 							SHOP
-						</span>
+						</Link>
 					</div>
 				</div>
 			))}

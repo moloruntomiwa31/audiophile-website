@@ -16,7 +16,7 @@ const icons = [
 
 export const Footer = () => {
 	return (
-		<footer className="relative bg-black pt-16 pb-10">
+		<footer className="relative bg-black pt-16 pb-10 mt-16">
 			<div className="flex flex-col container mx-auto gap-8 px-8 max-w-6xl">
 				<div className="absolute -top-0.5 left-40 md:left-8 lg:left-22 w-25 h-1 bg-peach"></div>
 				<div className="flex flex-col gap-6 lg:gap-0 lg:flex-row justify-between md:items-start items-center">

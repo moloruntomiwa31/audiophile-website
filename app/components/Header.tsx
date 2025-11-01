@@ -1,14 +1,18 @@
+'use client';
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const links = [
-	{ name: "Home", href: "#" },
-	{ name: "Headphones", href: "#" },
-	{ name: "Speakers", href: "#" },
-	{ name: "Earphones", href: "#" },
+	{ name: "Home", href: "/" },
+	{ name: "Headphones", href: "/categories/headphones" },
+	{ name: "Speakers", href: "/categories/speakers" },
+	{ name: "Earphones", href: "/categories/earphones" },
 ];
 
 export const Header = () => {
+	const pathName = usePathname();
+
 	return (
 		<header className="bg-black pt-6">
 			<div className="container px-8 flex justify-between items-center max-w-6xl mx-auto border-b border-white pb-8">
@@ -36,7 +40,9 @@ export const Header = () => {
 							>
 								<Link
 									href={link.href}
-									className="leading-[25px] tracking-[2px]"
+									className={`leading-[25px] tracking-[2px] ${
+										pathName === link.href ? "text-brown" : ""
+									}`}
 								>
 									{link.name}
 								</Link>

@@ -21,13 +21,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Header />
       <body
         className={`${manrope.variable} antialiased`}
       >
+        <Header />
         {children}
+        <Footer />
       </body>
-      <Footer />
     </html>
   );
 }
