@@ -1,65 +1,77 @@
 import Image from "next/image";
+import { HomeHero } from "./components/home/HomeHero";
+import { BringingBestOut } from "./components/home/BringingBestOut";
+import { AudioCategories } from "./components/home/AudioCategories";
 
 export default function Home() {
-  return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
-  );
+	return (
+		<div>
+			<HomeHero />
+			<AudioCategories />
+			<div className="mt-16 space-y-8 w-[90%] md:max-w-6xl mx-auto">
+				<div className="bg-brown lg:h-[450px] rounded-lg">
+					<div className="flex flex-col lg:flex-row gap-8 items-center justify-between container mx-auto max-w-4xl py-12 px-10 lg:pt-18">
+						<Image
+							src="/home/image-speaker-zx9.svg"
+							alt="Speaker Image"
+							width={340}
+							height={210}
+							className="hidden lg:block"
+						/>
+						<Image
+							src="/home/image-speaker-zx9.svg"
+							alt="Speaker Image"
+							width={200}
+							height={120}
+							className="w-40 lg:hidden"
+						/>
+						<div className="max-w-sm flex flex-col items-center lg:items-start gap-4 text-center lg:text-left ">
+							<h2 className="text-white uppercase font-bold text-4xl md:text-5xl max-w-xs leading-tight">
+								ZX9 SPEAKER{" "}
+							</h2>
+							<p className="text-white/70 leading-relaxed text-sm md:text-lg max-w-xs">
+								Upgrade to premium speakers that are phenomenally built to
+								deliver truly remarkable sound.
+							</p>
+							<button className="bg-transparent border border-black cursor-pointer hover:bg-black hover:text-white transition duration-300 p-3 text-black w-40 uppercase text-sm mt-4">
+								See Product
+							</button>
+						</div>
+					</div>
+				</div>
+				<div className="bg-darkGray rounded-lg lg:h-[400px] bg-cover bg-right bg-[url('/home/image-speaker-zx7-mobile.jpg')] md:bg-[url('/home/image-speaker-zx7-tab.jpg')] lg:bg-[url('/home/image-speaker-zx7.jpg')]">
+					<div className="container mx-auto max-w-4xl py-12 px-10 lg:pt-18 h-full flex items-center">
+						<div className="max-w-sm flex flex-col items-start gap-4 text-center lg:text-left">
+							<h2 className="text-black uppercase font-bold text-3xl md:text-4xl leading-tight tracking-[2px]">
+								ZX7 SPEAKER{" "}
+							</h2>
+							<button className="bg-transparent border border-black cursor-pointer hover:bg-black hover:text-white transition duration-300 p-3 text-black w-40 uppercase text-sm mt-4">
+								See Product
+							</button>
+						</div>
+					</div>
+				</div>
+				<div className="w-full">
+					<div className="flex flex-col md:flex-row items-stretch gap-8 md:gap-5 mx-auto md:max-w-4xl">
+						<Image
+							src="/home/image-earphones-yx1.jpg"
+							alt="Speaker Image"
+							width={340}
+							height={220}
+							className="w-full md:w-1/2 rounded-lg object-cover"
+						/>
+						<div className="w-full md:w-1/2 rounded-lg bg-lightGray py-8 px-20 flex flex-col items-center lg:items-start gap-4 text-center lg:text-left">
+							<h2 className="text-black uppercase font-bold text-4xl leading-tight">
+								YX1 EARPHONES{" "}
+							</h2>
+							<button className="bg-transparent border border-black cursor-pointer hover:bg-black hover:text-white transition duration-300 p-3 text-black w-40 uppercase text-sm mt-4">
+								See Product
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+      <BringingBestOut />
+		</div>
+	);
 }
