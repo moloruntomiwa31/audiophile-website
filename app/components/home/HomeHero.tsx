@@ -50,9 +50,9 @@ export const HomeHero = () => {
 							Experience natural, lifelike audio and exceptional build quality
 							made for the passionate music enthusiast.
 						</p>
-						<button className="bg-brown cursor-pointer hover:bg-peach transition duration-300 p-3 text-white w-40 uppercase text-sm">
+						<Link href="/products/xx99-mark-ii" className="bg-brown cursor-pointer hover:bg-peach transition duration-300 p-3 text-white w-40 uppercase text-sm text-center block">
 							See Product
-						</button>
+						</Link>
 					</div>
 					<Image
 						src="/home/headphones.png"

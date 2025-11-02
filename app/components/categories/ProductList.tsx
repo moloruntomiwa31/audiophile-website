@@ -23,7 +23,7 @@ export const ProductList = ({ products }: ProductListProps) => {
 						index === 1 ? "lg:flex-row-reverse" : ""
 					}`}
 				>
-					<div className="md:w-full flex justify-center bg-darkGray p-10 md:px-20 md:py-10 lg:px-10 lg:py-20 rounded-lg">
+					<div className="md:w-full flex flex-col justify-center items-center bg-darkGray p-10 md:px-20 md:py-10 lg:px-10 lg:py-20 rounded-lg">
 						<Image
 							src={product.image}
 							alt={product.title}
@@ -38,6 +38,7 @@ export const ProductList = ({ products }: ProductListProps) => {
 							height={380}
 							className="md:block hidden lg:hidden"
 						/>
+						<div className="blur-md bg-black/50 w-44 h-2"></div>
 					</div>
 					<div className="max-w-md text-center lg:text-left grid gap-6">
 						{product.status === "new" && (
@@ -51,7 +52,10 @@ export const ProductList = ({ products }: ProductListProps) => {
 						<p className="leading-[25px] tracking-[2px] text-black/50 text-sm">
 							{product.description}
 						</p>
-						<Link href={`/products/${product.id}`} className="bg-brown cursor-pointer mx-auto lg:mx-0 hover:bg-peach transition duration-300 p-3 text-white w-40 uppercase text-sm text-center block">
+						<Link
+							href={`/products/${product.id}`}
+							className="bg-brown cursor-pointer mx-auto lg:mx-0 hover:bg-peach transition duration-300 p-3 text-white w-40 uppercase text-sm text-center block"
+						>
 							See Product
 						</Link>
 					</div>

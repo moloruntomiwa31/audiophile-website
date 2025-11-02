@@ -65,7 +65,7 @@ export const headphones: Product[] = [
 			"<ul><li><span style='color: #D87D4A; font-weight: 700;'>1x</span> Headphone Unit</li><li><span style='color: #D87D4A; font-weight: 700;'>2x</span> Replacement Earcups</li><li><span style='color: #D87D4A; font-weight: 700;'>1x</span> User Manual</li><li><span style='color: #D87D4A; font-weight: 700;'>3x</span> 3.5mm Audio Cable</li><li><span style='color: #D87D4A; font-weight: 700;'>1x</span> Travel Bag</li></ul>",
 		alsoLike: [
 			{
-				image: "/home/headphones/xx99-mark-ii.png",
+				image: "/home/headphones/xx99-markii.png",
 				href: "/products/xx99-mark-ii",
 				title: "XX99 Mark II",
 			},

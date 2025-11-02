@@ -32,13 +32,14 @@ export default async function ProductPage({ params }: ProductPageProps) {
 			</div>
 			<div className="w-[80%] mt-10 md:max-w-4xl mx-auto">
 				<section className="flex flex-col md:flex-row gap-12 lg:gap-28 items-center justify-between mx-auto container">
-					<div className="md:w-full flex justify-center bg-darkGray p-10 md:px-10 md:py-20 rounded-lg">
+					<div className="md:w-full flex flex-col justify-center items-center bg-darkGray p-10 md:px-10 md:py-20 rounded-lg">
 						<Image
 							src={product.image}
 							alt={product.title}
 							width={340}
 							height={480}
 						/>
+						<div className="blur-md bg-black/50 w-44 h-2"></div>
 					</div>
 					<div className="max-w-md text-left grid gap-6">
 						{product.status === "new" && (
@@ -80,11 +81,29 @@ export default async function ProductPage({ params }: ProductPageProps) {
 			<div className="mt-16 w-[80%] md:max-w-4xl mx-auto">
 				<div className="flex flex-col md:flex-row gap-4">
 					<div className="flex flex-col gap-4 md:flex-1">
-						<Image src={product.gallery[0]} width={445} height={280} alt="Image" className="w-full rounded-lg" />
-						<Image src={product.gallery[1]} width={445} height={280} alt="Image" className="w-full rounded-lg" />
+						<Image
+							src={product.gallery[0]}
+							width={445}
+							height={280}
+							alt="Image"
+							className="w-full rounded-lg"
+						/>
+						<Image
+							src={product.gallery[1]}
+							width={445}
+							height={280}
+							alt="Image"
+							className="w-full rounded-lg"
+						/>
 					</div>
 					<div className="md:flex-1">
-						<Image src={product.gallery[2]} width={635} height={540} alt="Image" className="w-full h-96 md:h-full object-cover lg::object-fill rounded-lg" />
+						<Image
+							src={product.gallery[2]}
+							width={635}
+							height={540}
+							alt="Image"
+							className="w-full h-96 md:h-full object-cover lg::object-fill rounded-lg"
+						/>
 					</div>
 				</div>
 			</div>
