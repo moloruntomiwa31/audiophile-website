@@ -6,10 +6,17 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ThankYouModal } from "../components/checkout/ThankYouModal";
 import { checkoutSchema, type CheckoutFormData } from "../schema/checkout";
+import { useCartStore } from "@/app/store/cart";
 
 export default function CheckoutPage() {
 	const [isThankYouOpen, setIsThankYouOpen] = useState(false);
 	const [isSubmitting, setIsSubmitting] = useState(false);
+	const { items, clearCart } = useCartStore();
+
+	const subtotal = items.reduce((total, item) => total + (item.price * item.quantity), 0);
+	const shipping = 50;
+	const vat = Math.round(subtotal * 0.2);
+	const grandTotal = subtotal + shipping;
 
 	const {
 		register,
@@ -32,6 +39,7 @@ export default function CheckoutPage() {
 		try {
 			// Simulate API call
 			await new Promise(resolve => setTimeout(resolve, 1000));
+			clearCart();
 			setIsThankYouOpen(true);
 		} catch (error) {
 			console.error("Submission error:", error);
@@ -267,37 +275,45 @@ export default function CheckoutPage() {
 					<div className="lg:w-1/3 h-fit bg-white rounded-lg p-8">
 						<h2 className="text-lg font-bold uppercase mb-6">Summary</h2>
 						
-						<div className="space-y-4 mb-6">
-							<div className="flex items-center gap-4">
-								<div className="bg-lightGray p-2 rounded">
-									<Image src="/home/headphones/xx99-markii.png" width={50} height={50} alt="Product" />
+						{items.length === 0 ? (
+							<p className="text-black/50 text-center py-8">No items in cart</p>
+						) : (
+							<>
+								<div className="space-y-4 mb-6">
+									{items.map((item) => (
+										<div key={item.id} className="flex items-center gap-4">
+											<div className="bg-lightGray p-2 rounded-lg">
+												<Image src={item.image} width={50} height={50} alt={item.title} />
+											</div>
+											<div className="flex-1">
+												<h3 className="font-bold text-sm">{item.title}</h3>
+												<p className="text-black/50 text-sm font-bold">${item.price.toLocaleString()}</p>
+											</div>
+											<span className="text-black/50 text-sm font-bold">x{item.quantity}</span>
+										</div>
+									))}
 								</div>
-								<div className="flex-1">
-									<h3 className="font-bold text-sm">XX99 MK II</h3>
-									<p className="text-black/50 text-sm">$2,999</p>
-								</div>
-								<span className="text-black/50 text-sm">x1</span>
-							</div>
-						</div>
 
-						<div className="space-y-2 mb-6">
-							<div className="flex justify-between">
-								<span className="text-black/50 uppercase text-sm">Total</span>
-								<span className="font-bold">$5,396</span>
-							</div>
-							<div className="flex justify-between">
-								<span className="text-black/50 uppercase text-sm">Shipping</span>
-								<span className="font-bold">$50</span>
-							</div>
-							<div className="flex justify-between">
-								<span className="text-black/50 uppercase text-sm">VAT (Included)</span>
-								<span className="font-bold">$1,079</span>
-							</div>
-							<div className="flex justify-between pt-2 border-t">
-								<span className="text-black/50 uppercase text-sm">Grand Total</span>
-								<span className="font-bold text-brown text-lg">$5,446</span>
-							</div>
-						</div>
+								<div className="space-y-2 mb-6">
+									<div className="flex justify-between">
+										<span className="text-black/50 uppercase text-sm">Total</span>
+										<span className="font-bold">${subtotal.toLocaleString()}</span>
+									</div>
+									<div className="flex justify-between">
+										<span className="text-black/50 uppercase text-sm">Shipping</span>
+										<span className="font-bold">${shipping}</span>
+									</div>
+									<div className="flex justify-between">
+										<span className="text-black/50 uppercase text-sm">VAT (Included)</span>
+										<span className="font-bold">${vat.toLocaleString()}</span>
+									</div>
+									<div className="flex justify-between pt-2 border-t">
+										<span className="text-black/50 uppercase text-sm">Grand Total</span>
+										<span className="font-bold text-brown text-lg">${grandTotal.toLocaleString()}</span>
+									</div>
+								</div>
+							</>
+						)}
 
 						<button 
 							type="submit"

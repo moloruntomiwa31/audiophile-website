@@ -55,7 +55,12 @@ export default async function ProductPage({ params }: ProductPageProps) {
 						</p>
 						<p className="tracking-wide font-bold text-lg">${product.price}</p>
 						<div className="flex flex-col lg:flex-row items-start gap-4">
-							<QuantitySelector />
+							<QuantitySelector product={{
+								id: product.id,
+								title: product.title,
+								price: product.price,
+								image: product.image
+							}} />
 						</div>
 					</div>
 				</section>
