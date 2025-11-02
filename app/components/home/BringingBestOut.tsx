@@ -8,14 +8,14 @@ export const BringingBestOut = () => {
 						alt="Gallery Image 1"
 						width={540}
 						height={320}
-						className="w-full md:hidden object-cover rounded-lg"
+						className="w-full md:hidden lg:block object-cover rounded-lg"
 					/>
 					<Image
 						src="/home/man-md.png"
 						alt="Gallery Image 1"
 						width={540}
 						height={320}
-						className="w-full hidden md:block object-cover rounded-lg"
+						className="w-full hidden md:block lg:hidden object-cover rounded-lg"
 					/>
 					<div className="w-full rounded-lg py-8 flex flex-col items-center lg:items-start gap-4 text-center lg:text-left">
 						<h2 className="text-black uppercase font-bold text-4xl leading-tight">

@@ -1,11 +1,13 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const links = [
-	{ name: "Home", href: "#" },
-	{ name: "Headphones", href: "#" },
-	{ name: "Speakers", href: "#" },
-	{ name: "Earphones", href: "#" },
+	{ name: "Home", href: "/" },
+	{ name: "Headphones", href: "/categories/headphones" },
+	{ name: "Speakers", href: "/categories/speakers" },
+	{ name: "Earphones", href: "/categories/earphones" },
 ];
 
 const icons = [
@@ -15,6 +17,7 @@ const icons = [
 ];
 
 export const Footer = () => {
+	const pathname = usePathname();
 	return (
 		<footer className="relative bg-black pt-16 pb-10 mt-16">
 			<div className="flex flex-col container mx-auto gap-8 px-8 max-w-6xl">
@@ -30,7 +33,9 @@ export const Footer = () => {
 								>
 									<Link
 										href={link.href}
-										className="leading-[25px] tracking-[2px]"
+										className={`leading-[25px] tracking-[2px] ${
+											pathname === link.href ? "text-brown" : ""
+										}`}
 									>
 										{link.name}
 									</Link>

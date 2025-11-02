@@ -1,6 +1,8 @@
 import Image from "next/image";
+import Link from "next/link";
 
 type Product = {
+	id: string;
 	status: string;
 	image: string;
 	title: string;
@@ -49,9 +51,9 @@ export const ProductList = ({ products }: ProductListProps) => {
 						<p className="leading-[25px] tracking-[2px] text-black/50 text-sm">
 							{product.description}
 						</p>
-						<button className="bg-brown cursor-pointer mx-auto lg:mx-0 hover:bg-peach transition duration-300 p-3 text-white w-40 uppercase text-sm">
+						<Link href={`/products/${product.id}`} className="bg-brown cursor-pointer mx-auto lg:mx-0 hover:bg-peach transition duration-300 p-3 text-white w-40 uppercase text-sm text-center block">
 							See Product
-						</button>
+						</Link>
 					</div>
 				</section>
 			))}

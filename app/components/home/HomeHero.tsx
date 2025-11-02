@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export const HomeHero = () => {
     return (
@@ -30,9 +31,9 @@ export const HomeHero = () => {
 							made for the passionate music enthusiast.
 						</p>
 
-						<button className="bg-brown cursor-pointer hover:bg-peach transition duration-300 p-3 text-white w-40 uppercase text-sm mt-4">
+						<Link href="/products/xx99-mark-ii" className="bg-brown cursor-pointer hover:bg-peach transition duration-300 p-3 text-white w-40 uppercase text-sm mt-4">
 							See Product
-						</button>
+						</Link>
 					</div>
 				</section>
 
