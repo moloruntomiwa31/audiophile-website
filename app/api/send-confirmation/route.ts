@@ -26,7 +26,7 @@ export async function POST(request: NextRequest) {
         </head>
         <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
           <div style="background-color: #D87D4A; color: white; padding: 20px; text-align: center;">
-            <h1 style="margin: 0; font-size: 24px;">Thank you for your order!</h1>
+            <h1 style="margin: 0; font-size: 24px; color: #fff;">Thank you for your order!</h1>
           </div>
           
           <div style="padding: 20px; background-color: #f9f9f9;">
@@ -77,7 +77,7 @@ export async function POST(request: NextRequest) {
               </p>
             </div>
             
-            <div style="text-align: center; margin: 30px 0;">
+            <div style="text-align: center; margin: 30px 0; color: #fff;">
               <a href="${process.env.NEXT_PUBLIC_BASE_URL}" 
                  style="background-color: #D87D4A; color: white; padding: 15px 30px; text-decoration: none; border-radius: 5px; font-weight: bold; display: inline-block;">
                 Check More Products

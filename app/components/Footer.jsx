@@ -26,7 +26,7 @@ export const Footer = () => {
 				</p>
 				<div className="flex flex-col md:flex-row justify-between items-center gap-8 md:mt-10 lg:mt-0">
 					<p className="text-white/50 leading-[25px]">
-						Copyright 2021. All Rights Reserved
+						Copyright 2025. All Rights Reserved
 					</p>
 					<nav>
 						<ul className="flex items-center gap-4">
