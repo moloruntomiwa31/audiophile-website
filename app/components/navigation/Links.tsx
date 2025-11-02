@@ -11,7 +11,7 @@ const links = [
 export const Links = () => {
     const pathName = usePathname();
     return (
-			<ul className="flex items-center-safe gap-x-6">
+			<ul className="flex items-center-safe flex-col md:flex-row gap-6">
 				{links.map((link) => (
 					<li
 						key={link.name}

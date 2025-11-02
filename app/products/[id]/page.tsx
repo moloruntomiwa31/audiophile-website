@@ -5,7 +5,7 @@ import { QuantitySelector } from "@/app/components/products/QuantitySelector";
 import { YouMayAlsoLike } from "@/app/components/products/YouMayAlsoLike";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import Link from "next/link";
+import { GoBackButton } from "@/app/components/ui/GoBackButton";
 
 interface ProductPageProps {
 	params: {
@@ -24,9 +24,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
 	return (
 		<div className="w-full">
 			<div className="flex items-center justify-between mt-16 w-[80%] md:max-w-4xl mx-auto">
-				<Link href="/categories/earphones" className="text-black/50">
-					Go back
-				</Link>
+				<GoBackButton />
 				<span />
 				<span />
 			</div>

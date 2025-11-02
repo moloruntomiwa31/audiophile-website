@@ -26,16 +26,18 @@ export const AudioCategories = ({ onClose }: AudioCategoriesProps) => {
 				<div
 					onClick={onClose}
 					key={`${item.title}-${idx}`}
-					className="group cursor-pointer bg-lightGray w-70 h-40 flex flex-col items-center justify-between text-center space-y-3 py-3 rounded-lg"
+					className="group cursor-pointer bg-lightGray w-70 h-40 flex flex-col items-center justify-between text-center space-y-3 py-3 rounded-lg relative"
 				>
-					<Image
-						src={item.image}
-						alt={item.title}
-						width={80}
-						height={80}
-						className="-mt-10"
-					/>
-					<div className="blur-md bg-black/40 w-20 h-4"></div>
+					<div className="relative">
+						<Image
+							src={item.image}
+							alt={item.title}
+							width={80}
+							height={80}
+							className="-mt-10 relative z-10"
+						/>
+						<div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 blur-md bg-black/40 w-20 h-4"></div>
+					</div>
 					<div className="space-y-3">
 						<h4 className="uppercase font-bold tracking-[1.29px]">
 							{item.title}
@@ -50,8 +52,8 @@ export const AudioCategories = ({ onClose }: AudioCategoriesProps) => {
 							<Image
 								src="/chevron-right.svg"
 								alt="Arrow"
-								width={10}
-								height={10}
+								width={8}
+								height={8}
 							/>
 						</div>
 					</div>

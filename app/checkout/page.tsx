@@ -1,17 +1,21 @@
 'use client';
 import Image from "next/image";
-import Link from "next/link";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/navigation";
 import { ThankYouModal } from "../components/checkout/ThankYouModal";
 import { checkoutSchema, type CheckoutFormData } from "../schema/checkout";
 import { useCartStore } from "@/app/store/cart";
+// import { useMutation } from "convex/react";
+// import { api } from "../../convex/_generated/api";
 
 export default function CheckoutPage() {
 	const [isThankYouOpen, setIsThankYouOpen] = useState(false);
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const { items, clearCart } = useCartStore();
+	// const createOrder = useMutation(api.orders.createOrder);
+	const router = useRouter();
 
 	const subtotal = items.reduce((total, item) => total + (item.price * item.quantity), 0);
 	const shipping = 50;
@@ -22,6 +26,7 @@ export default function CheckoutPage() {
 		register,
 		handleSubmit,
 		watch,
+		reset,
 		formState: { errors },
 	} = useForm<CheckoutFormData>({
 		resolver: zodResolver(checkoutSchema),
@@ -37,9 +42,57 @@ export default function CheckoutPage() {
 		setIsSubmitting(true);
 		
 		try {
-			// Simulate API call
-			await new Promise(resolve => setTimeout(resolve, 1000));
+			// Create order in Convex
+			const orderData = {
+				customerDetails: {
+					name: data.name,
+					email: data.email,
+					phone: data.phone,
+				},
+				shippingDetails: {
+					address: data.address,
+					city: data.city,
+					zipCode: data.zipCode,
+					country: data.country,
+				},
+				paymentMethod: data.paymentMethod,
+				items: items.map(item => ({
+					id: item.id,
+					title: item.title,
+					price: item.price,
+					quantity: item.quantity,
+				})),
+				totals: {
+					subtotal,
+					shipping,
+					vat,
+					grandTotal,
+				},
+			};
+			
+			// const orderId = await createOrder(orderData);
+			const orderId = `ORD-${Date.now()}`; // Temporary order ID
+			console.log('Order data prepared:', orderData);
+			
+			// Send confirmation email
+			const emailResponse = await fetch('/api/send-confirmation', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({
+					customerDetails: orderData.customerDetails,
+					shippingDetails: orderData.shippingDetails,
+					items: orderData.items,
+					totals: orderData.totals,
+					orderId,
+				}),
+			});
+			
+			if (!emailResponse.ok) {
+				console.error('Email sending failed:', await emailResponse.text());
+			}
+			
 			clearCart();
+			reset();
 			setIsThankYouOpen(true);
 		} catch (error) {
 			console.error("Submission error:", error);
@@ -51,9 +104,12 @@ export default function CheckoutPage() {
 	return (
 		<div className="bg-lightGray min-h-screen py-8">
 			<div className="container mx-auto max-w-6xl px-4">
-				<Link href="/" className="text-black/50 mb-8 inline-block">
+				<button 
+					onClick={() => router.back()}
+					className="text-black/50 mb-8 inline-block hover:text-brown transition"
+				>
 					Go back
-				</Link>
+				</button>
 				
 				<form onSubmit={handleSubmit(onSubmit)} className="flex flex-col lg:flex-row gap-8">
 					{/* Checkout Form */}

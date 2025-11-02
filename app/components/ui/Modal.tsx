@@ -25,7 +25,7 @@ export const Modal = ({ isOpen, onClose, children, position = 'center' }: ModalP
 	return (
 		<div className={`fixed inset-0 z-50 ${getPositionClasses()}`}>
 			<div 
-				className="absolute inset-0 bg-black/50" 
+				className="absolute inset-0 bg-black/50 px-4" 
 				onClick={onClose}
 			/>
 			<div className="relative bg-white rounded-lg p-6 max-w-md w-full z-10">

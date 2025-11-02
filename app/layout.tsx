@@ -3,6 +3,7 @@ import { Manrope } from "next/font/google";
 import "./globals.css";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
+import { ConvexClientProvider } from "./ConvexClientProvider";
 
 const manrope = Manrope({
   variable: "--font-manrope",
@@ -40,9 +41,11 @@ export default function RootLayout({
       <body
         className={`${manrope.variable} antialiased`}
       >
-        <Header />
-        {children}
-        <Footer />
+        <ConvexClientProvider>
+          <Header />
+          {children}
+          <Footer />
+        </ConvexClientProvider>
       </body>
     </html>
   );

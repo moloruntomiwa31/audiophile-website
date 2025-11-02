@@ -2,6 +2,7 @@ import Image from "next/image";
 import { HomeHero } from "./components/home/HomeHero";
 import { BringingBestOut } from "./components/home/BringingBestOut";
 import { AudioCategories } from "./components/home/AudioCategories";
+import Link from "next/link";
 
 export default function Home() {
 	return (
@@ -9,13 +10,20 @@ export default function Home() {
 			<HomeHero />
 			<AudioCategories />
 			<div className="mt-16 space-y-8 w-[90%] md:max-w-6xl mx-auto">
-				<div className="bg-brown lg:h-[450px] rounded-lg">
-					<div className="flex flex-col lg:flex-row gap-8 items-center justify-between container mx-auto max-w-4xl py-12 px-10 lg:pt-18">
+				<div className="bg-brown lg:h-[450px] rounded-lg relative overflow-hidden">
+					<Image
+						src="/home/pattern-circles.svg"
+						alt="Pattern"
+						width={944}
+						height={944}
+						className="absolute top-0 -left-24 hidden md:block"
+					/>
+					<div className="flex flex-col lg:flex-row gap-8 items-center justify-between container mx-auto max-w-4xl py-12 px-10 lg:pt-18 relative z-10">
 						<Image
 							src="/home/image-speaker-zx9.svg"
 							alt="Speaker Image"
 							width={340}
-							height={210}
+							height={200}
 							className="hidden lg:block"
 						/>
 						<Image
@@ -33,9 +41,9 @@ export default function Home() {
 								Upgrade to premium speakers that are phenomenally built to
 								deliver truly remarkable sound.
 							</p>
-							<button className="bg-transparent border border-black cursor-pointer hover:bg-black hover:text-white transition duration-300 p-3 text-black w-40 uppercase text-sm mt-4">
+							<Link href="/products/zx9" className="inline-block bg-transparent border border-black cursor-pointer hover:bg-black hover:text-white transition duration-300 p-3 text-black w-40 uppercase text-sm mt-4 text-center">
 								See Product
-							</button>
+							</Link>
 						</div>
 					</div>
 				</div>
@@ -45,9 +53,9 @@ export default function Home() {
 							<h2 className="text-black uppercase font-bold text-3xl md:text-4xl leading-tight tracking-[2px]">
 								ZX7 SPEAKER{" "}
 							</h2>
-							<button className="bg-transparent border border-black cursor-pointer hover:bg-black hover:text-white transition duration-300 p-3 text-black w-40 uppercase text-sm mt-4">
+							<Link href="/products/zx7" className="inline-block bg-transparent border border-black cursor-pointer hover:bg-black hover:text-white transition duration-300 p-3 text-black w-40 uppercase text-sm mt-4 text-center">
 								See Product
-							</button>
+							</Link>
 						</div>
 					</div>
 				</div>
@@ -64,9 +72,9 @@ export default function Home() {
 							<h2 className="text-black uppercase font-bold text-4xl leading-tight">
 								YX1 EARPHONES{" "}
 							</h2>
-							<button className="bg-transparent border border-black cursor-pointer hover:bg-black hover:text-white transition duration-300 p-3 text-black w-40 uppercase text-sm mt-4">
+							<Link href="/products/yx1" className="inline-block bg-transparent border border-black cursor-pointer hover:bg-black hover:text-white transition duration-300 p-3 text-black w-40 uppercase text-sm mt-4 text-center">
 								See Product
-							</button>
+							</Link>
 						</div>
 					</div>
 				</div>
