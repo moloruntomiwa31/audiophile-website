@@ -1,36 +1,72 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Audiophile - Premium Audio Equipment E-commerce
 
-## Getting Started
+A modern, responsive e-commerce website for premium audio equipment built with Next.js, featuring a complete shopping experience with cart functionality, checkout process, and email confirmations.
 
-First, run the development server:
+## 🚀 Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Core Functionality
+- **Product Catalog**: Browse headphones, speakers, and earphones
+- **Dynamic Product Pages**: Detailed product information with image galleries
+- **Shopping Cart**: Add/remove items with quantity management using Zustand
+- **Checkout Process**: Complete form validation with React Hook Form & Zod
+- **Order Management**: Store orders in Convex database
+- **Email Confirmations**: Automated order confirmations via Resend API
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Technical Features
+- **State Management**: Zustand for cart and application state
+- **Database**: Convex for real-time data storage
+- **Email Service**: Resend for transactional emails
+- **Type Safety**: TypeScript throughout the application
+- **Modern UI**: Custom components with Tailwind CSS
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🛠️ Tech Stack
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Framework**: Next.js 16 (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **State Management**: Zustand
+- **Database**: Convex
+- **Form Handling**: React Hook Form + Zod
+- **Email Service**: Resend
+- **Deployment**: Vercel
 
-## Learn More
+## 📦 Installation
 
-To learn more about Next.js, take a look at the following resources:
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd audiophile-website
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. **Install dependencies**
+   ```bash
+   pnpm install
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+3. **Set up environment variables**
+   ```bash
+   cp .env.example .env.local
+   ```
+   
+   Update `.env.local` with your values:
+   ```
+   NEXT_PUBLIC_CONVEX_URL=your_convex_deployment_url
+   NEXT_PUBLIC_BASE_URL=http://localhost:3000
+   RESEND_API_KEY=your_resend_api_key
+   ```
 
-## Deploy on Vercel
+4. **Start Convex development server**
+   ```bash
+   npx convex dev
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+5. **Run the development server**
+   ```bash
+   pnpm dev
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+6. **Open [http://localhost:3000](http://localhost:3000)**
+
+## 🔗 Links
+
+- **Live Demo**: [https://audiophile-31.vercel.app](https://audiophile-31.vercel.app)
