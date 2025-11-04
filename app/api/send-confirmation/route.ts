@@ -1,7 +1,15 @@
-import { Resend } from 'resend';
+import nodemailer from 'nodemailer';
 import { NextRequest, NextResponse } from 'next/server';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const transporter = nodemailer.createTransport({
+  host: process.env.SMTP_HOST,
+  port: parseInt(process.env.SMTP_PORT || '587'),
+  secure: false,
+  auth: {
+    user: process.env.SMTP_USER,
+    pass: process.env.SMTP_PASS,
+  },
+});
 
 export async function POST(request: NextRequest) {
   try {
@@ -12,9 +20,9 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
     }
 
-    const { data, error } = await resend.emails.send({
-      from: 'Audiophile Audio Store <onboarding@resend.dev>',
-      to: [customerDetails.email],
+    await transporter.sendMail({
+      from: `"Audiophile Audio Store" <${process.env.SMTP_USER}>`,
+      to: customerDetails.email,
       subject: `Order Confirmation from AudioPhile Audio Store - #${orderId}`,
       html: `
         <!DOCTYPE html>
@@ -104,11 +112,7 @@ export async function POST(request: NextRequest) {
       `,
     });
 
-    if (error) {
-      return NextResponse.json({ error }, { status: 400 });
-    }
-
-    return NextResponse.json({ data });
+    return NextResponse.json({ success: true, message: 'Email sent successfully' });
   } catch (error) {
     return NextResponse.json({ error }, { status: 500 });
   }

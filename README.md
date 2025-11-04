@@ -10,12 +10,12 @@ A modern, responsive e-commerce website for premium audio equipment built with N
 - **Shopping Cart**: Add/remove items with quantity management using Zustand
 - **Checkout Process**: Complete form validation with React Hook Form & Zod
 - **Order Management**: Store orders in Convex database
-- **Email Confirmations**: Automated order confirmations via Resend API
+- **Email Confirmations**: Automated order confirmations via Nodemailer SMTP
 
 ### Technical Features
 - **State Management**: Zustand for cart and application state
 - **Database**: Convex for real-time data storage
-- **Email Service**: Resend for transactional emails
+- **Email Service**: Nodemailer for transactional emails
 - **Type Safety**: TypeScript throughout the application
 - **Modern UI**: Custom components with Tailwind CSS
 
@@ -27,7 +27,7 @@ A modern, responsive e-commerce website for premium audio equipment built with N
 - **State Management**: Zustand
 - **Database**: Convex
 - **Form Handling**: React Hook Form + Zod
-- **Email Service**: Resend
+- **Email Service**: Nodemailer
 - **Deployment**: Vercel
 
 ## 📦 Installation
@@ -52,7 +52,10 @@ A modern, responsive e-commerce website for premium audio equipment built with N
    ```
    NEXT_PUBLIC_CONVEX_URL=your_convex_deployment_url
    NEXT_PUBLIC_BASE_URL=http://localhost:3000
-   RESEND_API_KEY=your_resend_api_key
+   SMTP_HOST=smtp.gmail.com
+   SMTP_PORT=587
+   SMTP_USER=your-email@gmail.com
+   SMTP_PASS=your-app-password
    ```
 
 4. **Start Convex development server**
